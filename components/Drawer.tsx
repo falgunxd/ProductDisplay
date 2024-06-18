@@ -1,5 +1,5 @@
 // Drawer.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -105,6 +105,10 @@ const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange }) =>
       </List>
     </Box>
   );
+
+  useEffect(() => {
+    // Sync checkboxes with filters
+  }, [filters]);
 
   return (
     <div>
