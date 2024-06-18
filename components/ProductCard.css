@@ -1,0 +1,55 @@
+/* src/ProductCard.css */
+
+.product-card {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    transition: box-shadow 0.3s;
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-image {
+    width: 200px;
+    height: auto;
+  }
+  
+  .product-details {
+    padding: 16px;
+    flex-grow: 1;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: red;
+  }
+  
+  .discount-price {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .description-popup {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-card:hover .description-popup {
+    display: block;
+    z-index: 10;
+  }
+  

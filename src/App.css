@@ -1,0 +1,30 @@
+/* @/src/App.css */
+.product-card {
+  border: 1px solid #ddd;
+  margin: 10px;
+  padding: 10px;
+  transition: transform 0.2s;
+  display: flex;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-image {
+  width: 150px;
+  height: auto; /* Maintains the aspect ratio */
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: red;
+}

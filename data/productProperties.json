@@ -1,0 +1,107 @@
+{
+    "Fabric": [
+        "Cotton",
+        "Knitted",
+        "Linen",
+        "Liva",
+        "Satin",
+        "Schiffli",
+        "Scuba",
+        "Georgette",
+        "Chiffon",
+        "Cotton Cambric",
+        "Crepe",
+        "Denim",
+        "Dobby",
+        "Jacquard",
+        "Chambray",
+        "Polyester",
+        "Rayon",
+        "Acrylic",
+        "BLENDED",
+        "Brasso",
+        "Modal",
+        "Silk",
+        "Wool",
+        "Wool Blend"
+    ],
+    "Length": [
+        "Above Knee",
+        "Knee Length",
+        "Maxi",
+        "Midi"
+    ],
+    "Pattern": [
+        "Solid",
+        "Printed",
+        "Embellished",
+        "Colourblocked",
+        "Dyed",
+        "Embroidered",
+        "Self Design"
+    ],
+    "Neck": [
+        "Boat Neck",
+        "Halter Neck",
+        "Sweetheart neck",
+        "V-Neck",
+        "Cowl Neck",
+        "Tie-Up Neck",
+        "Shirt Collar",
+        "Shoulder Straps",
+        "Square Neck",
+        "Keyhole Neck",
+        "Mandarin Collar"
+    ],
+    "Occasion": [
+        "Casual",
+        "Daily",
+        "Festive",
+        "Formal",
+        "Maternity",
+        "Party"
+    ],
+    "Print": [
+        "Chevron",
+        "Embellished",
+        "Colourblocked",
+        "Conversational",
+        "Bohemian",
+        "Brand Logo",
+        "Geometric",
+        "Graphic",
+        "Polka Dots",
+        "Self Design Typography",
+        "Solid",
+        "Stars",
+        "Self Design"
+    ],
+    "Shape": [
+        "A-Line",
+        "Fit And Flare",
+        "Wrap",
+        "Maxi",
+        "Blazer Dresses",
+        "Gown",
+        "Shirt",
+        "Empire"
+    ],
+    "SleeveLength": [
+        "Long Sleeves",
+        "Short Sleeves",
+        "Sleeveless",
+        "Three-Quarter sleeves"
+    ],
+    "SleeveStyling": [
+        "Cape Sleeves",
+        "Flutter Sleeves",
+        "Batwing Sleeves",
+        "Bell Sleeves",
+        "Bishop Sleeves",
+        "No Sleeves",
+        "Puff Sleeves",
+        "Cuffed Sleeves",
+        "Kimono Sleeves",
+        "Sholder Straps"
+    ]
+}
