@@ -1,0 +1,22 @@
+/* src/ProductPage.css */
+.product-page {
+    display: flex;
+    flex-direction: row; /* Side-by-side layout */
+    padding: 20px;
+  }
+  
+  .product-image-container {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .product-image-container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .product-details-container {
+    flex: 2;
+    padding-left: 20px;
+  }
+  
