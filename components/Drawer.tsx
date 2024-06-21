@@ -51,6 +51,10 @@ const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange }) =>
   const list = (
     <Box sx={{ width: 150, marginTop: '64px' }} role="presentation">
       <List>
+        <center style={{marginBottom: 40, fontWeight: 'bold'}}>
+          Apply Filters
+        </center>
+
         {Object.keys(productProperties).map((key) => (
           <ListItem key={key} disablePadding>
             <ListItemButton onClick={() => openSubDrawer(key, productProperties[key as keyof typeof productProperties])}>
@@ -63,7 +67,7 @@ const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange }) =>
   );
 
   const subDrawerList = (
-    <Box sx={{ width: 250, marginTop: '64px' }} role="presentation">
+    <Box sx={{ width: 250 }} role="presentation">
       <List>
         {subDrawer.items.map((item, index) => (
           <ListItem key={index} disablePadding>

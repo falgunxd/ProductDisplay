@@ -34,13 +34,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
       <div className="product-details">
         <h2>{product.BrandName}</h2>
-        <p> {product.Fabric} <> </>
-         {product.Length} <> </>
-         {product.Pattern} <> </>
-         {product.Shape}</p>
+        <p>{product.Fabric} <> </> {product.Length} <> </> {product.Pattern} <> </> {product.Shape}</p>
         <span className="discount-price">{product.DiscountPrice} INR</span> <>‌‌ ‌‌ </>
         <span className="original-price">{product.OriginalPrice} INR</span>
-        
       </div>
     </div>
   );

@@ -25,37 +25,3 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-
-.product-card {
-  width: calc(50% - 20px); /* Two cards per row */
-  margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
-  transition: box-shadow 0.3s;
-}
-
-.product-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.product-image {
-  width: 100%;
-  height: auto;
-}
-
-.product-details {
-  padding: 16px;
-}
-
-.original-price {
-  text-decoration: line-through;
-  color: red;
-}
-
-.discount-price {
-  color: green;
-  font-weight: bold;
-}

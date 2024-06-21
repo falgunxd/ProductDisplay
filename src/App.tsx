@@ -52,19 +52,21 @@ const App: React.FC = () => {
     <Router>
       <div className="app">
         <ResponsiveAppBar />
-        <DrawerComponent filters={filters} onFiltersChange={handleFiltersChange} />
-        <div className="filter-controls">
-          <input type="file" accept=".json" onChange={handleFileUpload} />
-          <button onClick={handleApplyFilters}>Apply</button>
-        </div>
         <Routes>
           <Route path="/product/:productId" element={<ProductPage />} />
           <Route path="/" element={
-            <div className="product-list">
-              {filteredProducts.map((product, index) => (
-                <ProductCard key={index} product={product} />
-              ))}
-            </div>
+            <>
+              <DrawerComponent filters={filters} onFiltersChange={handleFiltersChange} />
+              <div className="filter-controls">
+                <input type="file" accept=".json" onChange={handleFileUpload} />
+                <button onClick={handleApplyFilters}>Apply</button>
+              </div>
+              <div className="product-list">
+                {filteredProducts.map((product, index) => (
+                  <ProductCard key={index} product={product} />
+                ))}
+              </div>
+            </>
           } />
         </Routes>
       </div>
