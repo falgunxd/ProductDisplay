@@ -13,11 +13,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { useNavigate } from 'react-router-dom';
 
 const pages = ['Home', 'Dresses', 'Tops'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -36,6 +38,10 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const handleHomeClick = () => {
+    navigate('/');
+  };
+
   return (
     <AppBar position="fixed" sx={{ bgcolor: "purple", zIndex: 1201 }}>
       <Container maxWidth="xl">
@@ -45,7 +51,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            onClick={handleHomeClick}
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -54,6 +60,7 @@ function ResponsiveAppBar() {
               letterSpacing: '.0rem',
               color: 'inherit',
               textDecoration: 'none',
+              cursor: 'pointer'
             }}
           >
             Santra
@@ -100,7 +107,7 @@ function ResponsiveAppBar() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            onClick={handleHomeClick}
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -110,6 +117,7 @@ function ResponsiveAppBar() {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              cursor: 'pointer'
             }}
           >
             LOGO
