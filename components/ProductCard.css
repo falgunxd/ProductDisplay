@@ -28,11 +28,13 @@
   .original-price {
     text-decoration: line-through;
     color: red;
+    font-size:small;
   }
   
   .discount-price {
     color: green;
     font-weight: bold;
+    font-size:large;
   }
   
   .description-popup {
@@ -42,7 +44,7 @@
     border: 1px solid #ccc;
     padding: 8px;
     border-radius: 4px;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -51,5 +53,6 @@
   .product-card:hover .description-popup {
     display: block;
     z-index: 10;
+    
   }
   

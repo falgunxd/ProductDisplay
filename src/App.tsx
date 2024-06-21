@@ -1,8 +1,11 @@
 // App.tsx
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import testProducts from '../data/testProducts.json';
 import ProductCard from '../components/ProductCard';
 import DrawerComponent from '../components/Drawer';
+import ResponsiveAppBar from '../components/Appbar';
+import ProductPage from '../components/ProductPage';
 import './App.css'; // If you have a CSS file for styling
 
 const App: React.FC = () => {
@@ -46,16 +49,26 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="app">
-      <div className="filter-controls">
-        <input type="file" accept=".json" onChange={handleFileUpload} />
-        <button onClick={handleApplyFilters}>Apply</button>
+    <Router>
+      <div className="app">
+        <ResponsiveAppBar />
+        <DrawerComponent filters={filters} onFiltersChange={handleFiltersChange} />
+        <div className="filter-controls">
+          <input type="file" accept=".json" onChange={handleFileUpload} />
+          <button onClick={handleApplyFilters}>Apply</button>
+        </div>
+        <Routes>
+          <Route path="/product/:productId" element={<ProductPage />} />
+          <Route path="/" element={
+            <div className="product-list">
+              {filteredProducts.map((product, index) => (
+                <ProductCard key={index} product={product} />
+              ))}
+            </div>
+          } />
+        </Routes>
       </div>
-      <DrawerComponent filters={filters} onFiltersChange={handleFiltersChange} />
-      {filteredProducts.map((product, index) => (
-        <ProductCard key={index} product={product} />
-      ))}
-    </div>
+    </Router>
   );
 };
 

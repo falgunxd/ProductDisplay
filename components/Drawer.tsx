@@ -1,16 +1,13 @@
 // Drawer.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import productProperties from '../data/productProperties.json';
-
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 interface SubDrawerState {
   open: boolean;
@@ -24,32 +21,11 @@ interface FilterProps {
 }
 
 const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange }) => {
-  const [state, setState] = useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
-
   const [subDrawer, setSubDrawer] = useState<SubDrawerState>({
     open: false,
     items: [],
     currentAttribute: '',
   });
-
-  const toggleDrawer =
-    (anchor: Anchor, open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return;
-      }
-
-      setState({ ...state, [anchor]: open });
-    };
 
   const openSubDrawer = (attribute: string, items: string[]) => {
     setSubDrawer({ open: true, items, currentAttribute: attribute });
@@ -72,13 +48,8 @@ const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange }) =>
     onFiltersChange(newFilters);
   };
 
-  const list = (anchor: Anchor) => (
-    <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
+  const list = (
+    <Box sx={{ width: 150, marginTop: '64px' }} role="presentation">
       <List>
         {Object.keys(productProperties).map((key) => (
           <ListItem key={key} disablePadding>
@@ -92,7 +63,7 @@ const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange }) =>
   );
 
   const subDrawerList = (
-    <Box sx={{ width: 250 }} role="presentation">
+    <Box sx={{ width: 250, marginTop: '64px' }} role="presentation">
       <List>
         {subDrawer.items.map((item, index) => (
           <ListItem key={index} disablePadding>
@@ -106,31 +77,28 @@ const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange }) =>
     </Box>
   );
 
-  useEffect(() => {
-    // Sync checkboxes with filters
-  }, [filters]);
-
   return (
     <div>
-      {(['left'] as const).map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-          <Drawer
-            anchor="right"
-            open={subDrawer.open}
-            onClose={closeSubDrawer}
-          >
-            {subDrawerList}
-          </Drawer>
-        </React.Fragment>
-      ))}
+      <Drawer
+        variant="persistent"
+        anchor="left"
+        open
+        sx={{
+          '& .MuiDrawer-paper': { position: 'fixed', zIndex: 1, marginTop: '64px' },
+        }}
+      >
+        {list}
+      </Drawer>
+      <Drawer
+        anchor="right"
+        open={subDrawer.open}
+        onClose={closeSubDrawer}
+        sx={{
+          '& .MuiDrawer-paper': { position: 'fixed', zIndex: 1, marginTop: '64px' },
+        }}
+      >
+        {subDrawerList}
+      </Drawer>
     </div>
   );
 };
