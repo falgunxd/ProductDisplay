@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -7,7 +7,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import productProperties from '../data/productProperties.json';
 
@@ -16,7 +15,6 @@ interface SubDrawerState {
   items: string[];
   currentAttribute: string;
   selectedFilters: string[];
-  initialSelectedFilters: string[];
 }
 
 interface FilterProps {
@@ -31,22 +29,19 @@ const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange, refr
     items: [],
     currentAttribute: '',
     selectedFilters: [],
-    initialSelectedFilters: [],
   });
 
-  useEffect(() => {
-    if (subDrawer.open) {
-      // Update initial selected filters when the modal opens
-      setSubDrawer((prevState) => ({
-        ...prevState,
-        initialSelectedFilters: [...prevState.selectedFilters],
-      }));
+  const toggleSubDrawer = (attribute: string, items: string[]) => {
+    if (subDrawer.open && subDrawer.currentAttribute === attribute) {
+      closeSubDrawer();
+    } else {
+      openSubDrawer(attribute, items);
     }
-  }, [subDrawer.open]);
+  };
 
   const openSubDrawer = (attribute: string, items: string[]) => {
     const initialSelectedFilters = filters[attribute] || [];
-    setSubDrawer({ open: true, items, currentAttribute: attribute, selectedFilters: initialSelectedFilters, initialSelectedFilters });
+    setSubDrawer({ open: true, items, currentAttribute: attribute, selectedFilters: initialSelectedFilters });
   };
 
   const closeSubDrawer = () => {
@@ -77,48 +72,6 @@ const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange, refr
     refreshCards(); // Refresh cards with applied filters
   };
 
-  const list = (
-    <Box sx={{ width: 150, marginTop: '64px' }} role="presentation">
-      <List>
-        <Typography variant="h6" sx={{ marginBottom: 2, marginLeft: 2, fontWeight: 'bold' }}>
-          Filters
-        </Typography>
-        {Object.keys(productProperties).map((key) => (
-          <ListItem key={key} disablePadding>
-            <ListItemButton onClick={() => openSubDrawer(key, productProperties[key as keyof typeof productProperties])}>
-              <ListItemText primary={key} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-        <Button size='small' onClick={clearFilters} >Clear Filters</Button>
-      </Box>
-    </Box>
-  );
-
-  const subDrawerList = (
-    <Box sx={{ width: 300, bgcolor: 'background.paper', p: 2 }}>
-      <Typography variant="h6" align="center" sx={{ marginBottom: 2 }}>
-        {subDrawer.currentAttribute}
-      </Typography>
-      <List sx={{ maxHeight: 400, overflow: 'auto' }}>
-        {subDrawer.items.map((item, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton onClick={() => handleCheckboxChange(item)}>
-              <Checkbox checked={subDrawer.selectedFilters.includes(item)} />
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Box sx={{ display: 'flex', justifyContent: 'space-around', marginTop: 2 }}>
-        <Button variant="contained" onClick={applyFilters}>Apply</Button>
-        <Button variant="contained" onClick={closeSubDrawer}>Cancel</Button>
-      </Box>
-    </Box>
-  );
-
   return (
     <div>
       <Drawer
@@ -129,17 +82,44 @@ const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange, refr
           '& .MuiDrawer-paper': { position: 'fixed', zIndex: 1, marginTop: '64px' },
         }}
       >
-        {list}
+        <Box sx={{ width: 250, marginTop: '64px' }} role="presentation">
+          <List>
+            <Typography variant="h6" sx={{ marginBottom: 2, marginLeft: 2, fontWeight: 'bold' }}>
+              Filters
+            </Typography>
+            {Object.keys(productProperties).map((key) => (
+              <div key={key}>
+                <ListItem disablePadding>
+                  <ListItemButton onClick={() => toggleSubDrawer(key, productProperties[key as keyof typeof productProperties])}>
+                    <ListItemText primary={key} />
+                  </ListItemButton>
+                </ListItem>
+                {subDrawer.open && subDrawer.currentAttribute === key && (
+                  <Box sx={{ borderLeft: '2px solid #ddd', paddingLeft: 2 }}>
+                    <List sx={{ marginLeft: 2 }}>
+                      {subDrawer.items.map((item, index) => (
+                        <ListItem key={index} disablePadding>
+                          <ListItemButton onClick={() => handleCheckboxChange(item)}>
+                            <Checkbox checked={subDrawer.selectedFilters.includes(item)} />
+                            <ListItemText primary={item} sx={{ fontSize: '0.875rem' }} />
+                          </ListItemButton>
+                        </ListItem>
+                      ))}
+                    </List>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-around', marginTop: 2 }}>
+                      <Button variant="contained" onClick={applyFilters}>Apply</Button>
+                      <Button variant="contained" onClick={closeSubDrawer}>Cancel</Button>
+                    </Box>
+                  </Box>
+                )}
+              </div>
+            ))}
+          </List>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+            <Button size='small' onClick={clearFilters} >Clear Filters</Button>
+          </Box>
+        </Box>
       </Drawer>
-      <Modal
-        open={subDrawer.open}
-        onClose={closeSubDrawer}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-      >
-        {subDrawerList}
-      </Modal>
     </div>
   );
 };

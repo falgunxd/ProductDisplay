@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate,  } from 'react-router-dom';
 import queryString from 'query-string';
 import testProducts from '../data/testProducts.json';
 import ProductCard from '../components/ProductCard';
@@ -8,9 +8,7 @@ import ResponsiveAppBar from '../components/Appbar';
 import ProductPage from '../components/ProductPage';
 import './App.css'; // If you have a CSS file for styling
 
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-};
+
 
 const App: React.FC = () => {
   const [filters, setFilters] = useState<Record<string, string[]>>({});
@@ -18,7 +16,6 @@ const App: React.FC = () => {
   const [isInitialized, setIsInitialized] = useState(false);
 
   const navigate = useNavigate();
-  const query = useQuery();
 
   // Function to synchronize filters with URL
   const syncFiltersWithURL = () => {
