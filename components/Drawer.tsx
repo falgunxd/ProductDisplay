@@ -107,8 +107,8 @@ const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange, refr
                       ))}
                     </List>
                     <Box sx={{ display: 'flex', justifyContent: 'space-around', marginTop: 2 }}>
-                      <Button variant="contained" onClick={applyFilters}>Apply</Button>
-                      <Button variant="contained" onClick={closeSubDrawer}>Cancel</Button>
+                      <Button variant="contained" color="secondary"  onClick={applyFilters}>Apply</Button>
+                      <Button variant="outlined" onClick={closeSubDrawer}>Cancel</Button>
                     </Box>
                   </Box>
                 )}

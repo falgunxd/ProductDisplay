@@ -6,6 +6,7 @@ import ProductCard from '../components/ProductCard';
 import DrawerComponent from '../components/Drawer';
 import ResponsiveAppBar from '../components/Appbar';
 import ProductPage from '../components/ProductPage';
+import Banner from "./assets/BannerCrop.png"
 import './App.css'; // If you have a CSS file for styling
 
 
@@ -98,11 +99,12 @@ const App: React.FC = () => {
               onFiltersChange={handleFiltersChange} 
               refreshCards={refreshCards} 
             />
-            <div className="filter-controls">
+            <div className="filter-controls" >
               <input type="file" accept=".json" onChange={handleFileUpload} />
               <button onClick={handleApplyFilters}>Apply</button>
             </div>
-            <div className="product-list">
+            <img src={Banner} style={{marginTop: 0, zIndex:20, width: "220vh"}}/>
+            <div className="product-list"  style={{marginLeft: 250}}>
               {filteredProducts.map((product, index) => (
                 <ProductCard key={index} product={product} />
               ))}

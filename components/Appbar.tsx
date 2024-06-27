@@ -14,6 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
+import Logo from "./../src/assets/Logo.png"
 
 const pages = ['Home', 'Dresses', 'Tops'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -46,26 +47,7 @@ function ResponsiveAppBar() {
     <AppBar position="fixed" sx={{ bgcolor: "purple", zIndex: 1201 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            onClick={handleHomeClick}
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'sofia',
-              fontWeight: 700,
-              letterSpacing: '.0rem',
-              color: 'inherit',
-              textDecoration: 'none',
-              cursor: 'pointer'
-            }}
-          >
-            Santra
-          </Typography>
-
+          <img src={Logo} style={{width: "5%", marginRight: "20px"}}/>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
