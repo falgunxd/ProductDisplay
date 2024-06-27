@@ -1,4 +1,3 @@
-// App.tsx
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
@@ -16,10 +15,18 @@ const useQuery = () => {
 const App: React.FC = () => {
   const [filters, setFilters] = useState<Record<string, string[]>>({});
   const [uploadedFilters, setUploadedFilters] = useState<Record<string, string[]>>({});
+  const [isInitialized, setIsInitialized] = useState(false);
 
   const navigate = useNavigate();
   const query = useQuery();
 
+  // Function to synchronize filters with URL
+  const syncFiltersWithURL = () => {
+    const queryParams = queryString.stringify(filters, { arrayFormat: 'comma' });
+    navigate(`/?${queryParams}`, { replace: true });
+  };
+
+  // Apply filters from URL parameters
   useEffect(() => {
     const queryParams = queryString.parse(window.location.search);
     const newFilters: Record<string, string[]> = {};
@@ -31,11 +38,14 @@ const App: React.FC = () => {
     });
 
     setFilters(newFilters);
+    setIsInitialized(true); // Ensure that the initial URL filters are applied
   }, []);
 
+  // Sync filters with URL only when filters change and after initialization
   useEffect(() => {
-    const queryParams = queryString.stringify(filters, { arrayFormat: 'comma' });
-    navigate(`/?${queryParams}`, { replace: true });
+    if (isInitialized) {
+      syncFiltersWithURL();
+    }
   }, [filters]);
 
   const handleFiltersChange = (newFilters: Record<string, string[]>) => {
@@ -74,6 +84,11 @@ const App: React.FC = () => {
     setFilters(uploadedFilters);
   };
 
+  const refreshCards = () => {
+    // Function to refresh cards
+    console.log('Cards refreshed');
+  };
+
   return (
     <div className="app">
       <ResponsiveAppBar />
@@ -81,7 +96,11 @@ const App: React.FC = () => {
         <Route path="/product/:productId" element={<ProductPage />} />
         <Route path="/" element={
           <>
-            <DrawerComponent filters={filters} onFiltersChange={handleFiltersChange} />
+            <DrawerComponent 
+              filters={filters} 
+              onFiltersChange={handleFiltersChange} 
+              refreshCards={refreshCards} 
+            />
             <div className="filter-controls">
               <input type="file" accept=".json" onChange={handleFileUpload} />
               <button onClick={handleApplyFilters}>Apply</button>

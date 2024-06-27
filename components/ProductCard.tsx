@@ -28,7 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="product-card" onClick={handleClick}>
+    <div className="product-card" onClick={handleClick} style={{display: "block", width: 350}}>
       <div className="image-container">
         <img className="product-image" src={product.ImageLink} alt={product.BrandName} />
       </div>

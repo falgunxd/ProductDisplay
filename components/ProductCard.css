@@ -1,12 +1,11 @@
 /* src/ProductCard.css */
 
 .product-card {
-  display: flex;
-  flex-direction: column; /* Change to column to put details below the image */
+  display: block;
+  width: 350;
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
-  width: calc(50% - 20px); /* Two cards per row */
   margin: 10px;
   cursor: pointer;
   position: relative;
