@@ -6,7 +6,7 @@ import ProductCard from '../components/ProductCard';
 import DrawerComponent from '../components/Drawer';
 import ResponsiveAppBar from '../components/Appbar';
 import ProductPage from '../components/ProductPage';
-import Banner from "./assets/BannerCrop.png"
+import Banner from "./assets/BannerFemaleCrop.png"
 import './App.css'; // If you have a CSS file for styling
 
 
@@ -93,17 +93,19 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/product/:productId" element={<ProductPage />} />
         <Route path="/" element={
+
           <>
-            <DrawerComponent 
-              filters={filters} 
-              onFiltersChange={handleFiltersChange} 
-              refreshCards={refreshCards} 
-            />
             <div className="filter-controls" >
               <input type="file" accept=".json" onChange={handleFileUpload} />
               <button onClick={handleApplyFilters}>Apply</button>
             </div>
             <img src={Banner} style={{marginTop: 0, zIndex:20, width: "220vh"}}/>
+            <DrawerComponent 
+              filters={filters} 
+              onFiltersChange={handleFiltersChange} 
+              refreshCards={refreshCards} 
+            />
+            
             <div className="product-list"  style={{marginLeft: 250}}>
               {filteredProducts.map((product, index) => (
                 <ProductCard key={index} product={product} />
