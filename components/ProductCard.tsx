@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './ProductCard.css'; // Ensure CSS file is imported
 
 interface Product {
+  Title: string,
   ProductWebsite: string;
   ImageLink: string;
   Product_id: number;
@@ -34,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
       <div className="product-details">
         <h2>{product.BrandName}</h2>
-        <p>{product.Fabric} {product.Length} {product.Pattern} {product.Shape}</p>
+        <p>{product.Title}</p>
         <span className="discount-price">{product.DiscountPrice} INR</span> 
         <span className="original-price">{product.OriginalPrice} INR</span>
       </div>

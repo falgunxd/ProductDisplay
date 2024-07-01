@@ -1,0 +1,122 @@
+{
+    "Color": [
+        "orange",
+        "green",
+        "blue",
+        "red",
+        "white",
+        "pink",
+        "purple",
+        "black",
+        "silver",
+        "yellow",
+        "maroon",
+        "brown",
+        "beige",
+        "peach",
+        "grey",
+        "pink&trending",
+        "blue&trending",
+        "gold",
+        "white&trending",
+        "gold&new",
+        "multi"
+    ],
+    "Fabric": [
+        "Cotton blend",
+        "Cotton Blend",
+        "Sequin",
+        "Polyester Blend",
+        "Chiffon",
+        "Satin",
+        "Lace",
+        "Metallic",
+        "Chiffon Blend",
+        "Velvet",
+        "Chiffon ",
+        "Polyester"
+    ],
+    "Length": [
+        "Knee-length",
+        "Above Knee",
+        "Full Length",
+        "Knee-Length",
+        "Maxi",
+        "Below Knee",
+        "Midi",
+        "Blend"
+    ],
+    "Pattern": [
+        "Solid",
+        "Floral",
+        "Lace",
+        "Polka Dot",
+        "Animal Print",
+        "Ombre",
+        "Paisley",
+        "Above Knee"
+    ],
+    "Neck": [
+        "V-neck",
+        "Square Neck",
+        "Boat Neck",
+        "Off-Shoulder",
+        "V-Neck",
+        "Round Neck",
+        "High Neck",
+        "Keyhole Neck",
+        "Shirt Collar",
+        "Spaghetti Strap",
+        "Striped",
+        "Solid"
+    ],
+    "Occasion": [
+        "Casual",
+        "Party",
+        "Semi-Formal",
+        "Formal",
+        "Boat Neck",
+        "Round Neck"
+    ],
+    "Print": [
+        "Solid",
+        "Floral",
+        "Polka Dot",
+        "Animal Print",
+        "Ombre",
+        "Paisley",
+        "Casual"
+    ],
+    "Shape": [
+        "A-line",
+        "Fit and Flare",
+        "Bodycon",
+        "A-Line",
+        "Jumpsuit",
+        "Wrap Dress",
+        "Empire Waist",
+        "Shirt Dress",
+        "Shift",
+        "Sheath",
+        "Striped"
+    ],
+    "SleeveLength": [
+        "Short sleeves",
+        "Sleeveless",
+        "Short",
+        "Three-Quarter",
+        "Long",
+        "A-Line",
+        "Fit and Flare"
+    ],
+    "SleeveStyling": [
+        "Puff sleeves",
+        "Sleeveless",
+        "Fitted",
+        "Puff",
+        "Balloon",
+        "Flutter",
+        "Regular",
+        "Three-Quarter"
+    ]
+}

@@ -8,7 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import productProperties from '../data/productProperties.json';
+import productProperties from '../data/newProductProperties.json';
 
 interface SubDrawerState {
   open: boolean;

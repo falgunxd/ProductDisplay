@@ -1,19 +1,19 @@
 // ProductPage.tsx
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import testProducts from '../data/testProducts.json';
+import testProducts from '../data/newTestProducts.json';
 import './ProductPage.css'; // Ensure CSS file is imported
 
 const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
-  const product = testProducts.find((p) => p.Product_id === Number(productId));
+  const product = testProducts.find((p) => p.Product_id === productId);
 
   if (!product) {
     return <div>Product not found</div>;
   }
-
+  
   return (
-    <div className="product-page" style={{marginTop: 30}}>
+    <div className="product-page" style={{marginTop: 50}}>
       <div className="product-image-container">
         <img src={product.ImageLink} alt={product.BrandName} />
       </div>

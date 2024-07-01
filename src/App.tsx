@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useNavigate,  } from 'react-router-dom';
 import queryString from 'query-string';
-import testProducts from '../data/testProducts.json';
+import testProducts from '../data/newTestProducts.json';
 import ProductCard from '../components/ProductCard';
 import DrawerComponent from '../components/Drawer';
 import ResponsiveAppBar from '../components/Appbar';
@@ -100,17 +100,20 @@ const App: React.FC = () => {
               <button onClick={handleApplyFilters}>Apply</button>
             </div>
             <img src={Banner} style={{marginTop: 0, zIndex:20, width: "220vh"}}/>
-            <DrawerComponent 
-              filters={filters} 
-              onFiltersChange={handleFiltersChange} 
-              refreshCards={refreshCards} 
-            />
-            
-            <div className="product-list"  style={{marginLeft: 250}}>
-              {filteredProducts.map((product, index) => (
-                <ProductCard key={index} product={product} />
-              ))}
+            <div >
+              <DrawerComponent 
+                filters={filters} 
+                onFiltersChange={handleFiltersChange} 
+                refreshCards={refreshCards} 
+              />
+              
+              <div className="product-list"  style={{marginLeft: 250}}>
+                {filteredProducts.map((product, index) => (
+                  <ProductCard key={index} product={product} />
+                ))}
+              </div>
             </div>
+            
           </>
         } />
       </Routes>
