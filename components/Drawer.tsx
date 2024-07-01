@@ -82,7 +82,7 @@ const DrawerComponent: React.FC<FilterProps> = ({ filters, onFiltersChange, refr
           '& .MuiDrawer-paper': { position: 'fixed', zIndex: 1, marginTop: '64px' },
         }}
       >
-        <Box sx={{ width: 250, marginTop: '64px' }} role="presentation">
+        <Box sx={{ width: 220, marginTop: '64px' }} role="presentation">
           <List>
             <Typography variant="h6" sx={{ marginBottom: 2, marginLeft: 2, fontWeight: 'bold' }}>
               Filters

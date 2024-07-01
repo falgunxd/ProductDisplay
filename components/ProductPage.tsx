@@ -1,4 +1,3 @@
-// ProductPage.tsx
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import testProducts from '../data/newTestProducts.json';
@@ -13,13 +12,13 @@ const ProductPage: React.FC = () => {
   }
   
   return (
-    <div className="product-page" style={{marginTop: 50}}>
-      <div className="product-image-container">
+    <div className="product-page">
+      <div className="product-image-container" style={{marginRight: " 40px"}}>
         <img src={product.ImageLink} alt={product.BrandName} />
       </div>
       <div className="product-details-container">
         <h1>{product.BrandName}</h1>
-        <p>Category: {product.Category}</p>
+        <h4>{product.Title}</h4>
         <p>Gender: {product.category_by_Gender}</p>
         <p>Original Price: {product.OriginalPrice} INR</p>
         <p>Discount Price: {product.DiscountPrice} INR</p>
@@ -32,7 +31,6 @@ const ProductPage: React.FC = () => {
         <p>Shape: {product.Shape}</p>
         <p>Sleeve Length: {product.SleeveLength}</p>
         <p>Sleeve Styling: {product.SleeveStyling}</p>
-        <p>Description: {product.Description}</p>
       </div>
     </div>
   );

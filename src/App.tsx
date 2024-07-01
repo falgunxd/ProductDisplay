@@ -99,7 +99,7 @@ const App: React.FC = () => {
               <input type="file" accept=".json" onChange={handleFileUpload} />
               <button onClick={handleApplyFilters}>Apply</button>
             </div>
-            <img src={Banner} style={{marginTop: 0, zIndex:20, width: "220vh"}}/>
+
             <div >
               <DrawerComponent 
                 filters={filters} 
@@ -108,6 +108,7 @@ const App: React.FC = () => {
               />
               
               <div className="product-list"  style={{marginLeft: 250}}>
+              <img src={Banner} style={{marginTop: 15, width: "170vh"}}/>
                 {filteredProducts.map((product, index) => (
                   <ProductCard key={index} product={product} />
                 ))}
