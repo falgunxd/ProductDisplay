@@ -2,13 +2,14 @@
 .product-page {
   display: flex;
   flex-direction: row;
-  padding: 40px;
+  margin-top: 60px;
   background-color: #f9f9f9;
+  
 }
 
 .product-image-container {
-  flex: 1;
-  max-width: 50%;
+  flex: auto;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,8 +23,8 @@
 }
 
 .product-details-container {
-  flex: 2;
-  padding-left: 40px;
+  flex: auto;
+  padding: 40px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -41,6 +42,21 @@
   margin: 10px 0;
   color: #666;
 }
+.original-price {
+  text-decoration: line-through;
+  color: grey;
+  font-size: small;
+}
+
+.discount-price {
+  color: black;
+  /* font-weight: bold; */
+  font-size:xx-large;
+}
+.discount-percent {
+  color: red
+}
+
 
 .product-details-container p span {
   font-weight: bold;
